@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1 align=center>Список дел</h1>
+
+<table border="1" align = center>
+  <thead>
+    <tr>
+      <th>Название</th>
+      <th>Описание</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @todo_lists.each do |todo_list| %>
+      <tr>
+        <td><%= todo_list.title %></td>
+        <td><%= todo_list.description %></td>
+        <td><%= link_to 'Показать', todo_list %></td>
+        <td><%= link_to 'Редактировать', edit_todo_list_path(todo_list) %></td>
+        <td><%= link_to 'Удалить', todo_list, method: :delete, data: { confirm: 'Уверены?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<B><%= link_to 'Новое задание', new_todo_list_path %></B> &nbsp;|&nbsp;
